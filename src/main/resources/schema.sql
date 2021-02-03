@@ -2,7 +2,7 @@
 
 CREATE TABLE `Store`
 (
- `idStore` int NOT NULL ,
+ `idStore` int NOT NULL AUTO_INCREMENT,
  `Adress`  varchar(45) NOT NULL ,
 
 PRIMARY KEY (`idStore`)
@@ -12,10 +12,9 @@ PRIMARY KEY (`idStore`)
 
 CREATE TABLE `Product`
 (
- `idProduct`   int NOT NULL ,
+ `idProduct`   int NOT NULL AUTO_INCREMENT,
  `Name`        varchar(45) NOT NULL ,
  `Description` varchar(45) NOT NULL ,
- `idWarehouse` int NOT NULL ,
 
 PRIMARY KEY (`idProduct`)
 );
@@ -24,7 +23,7 @@ PRIMARY KEY (`idProduct`)
 
 CREATE TABLE `Warehouse`
 (
- `idWarehouse` int NOT NULL ,
+ `idWarehouse` int NOT NULL AUTO_INCREMENT,
  `idStore`     int NOT NULL ,
  `Quantity`    int NULL ,
  `idProduct`   int NOT NULL ,
@@ -38,7 +37,7 @@ FOREIGN KEY (`idProduct`) REFERENCES `Product` (`idProduct`)
 
 CREATE TABLE `Staff`
 (
- `idStaff`   int NOT NULL ,
+ `idStaff`   int NOT NULL AUTO_INCREMENT,
  `FirstName` varchar(45) NOT NULL ,
  `LastName`  varchar(45) NOT NULL ,
  `Salary`    int NOT NULL ,
@@ -52,7 +51,7 @@ FOREIGN KEY (`idStore`) REFERENCES `Store` (`idStore`)
 
 CREATE TABLE `Consumer`
 (
- `idConsumer` int NOT NULL ,
+ `idConsumer` int NOT NULL AUTO_INCREMENT,
  `FirstName`  varchar(45) NOT NULL ,
  `LastName`   varchar(45) NOT NULL ,
  `Phone`      varchar(45) NOT NULL ,
@@ -64,23 +63,25 @@ PRIMARY KEY (`idConsumer`)
 
 CREATE TABLE `Feedback`
 (
- `idFeedBack` int NOT NULL ,
+ `idFeedBack` int NOT NULL AUTO_INCREMENT,
  `Comment`    varchar(45) NOT NULL ,
  `Rating`     int NOT NULL ,
  `idConsumer` int NOT NULL ,
+ `idStore` int NOT NULL ,
 
 PRIMARY KEY (`idFeedBack`),
-FOREIGN KEY (`idConsumer`) REFERENCES `Consumer` (`idConsumer`)
+FOREIGN KEY (`idConsumer`) REFERENCES `Consumer` (`idConsumer`),
+FOREIGN KEY (`idStore`) REFERENCES `Store` (`idStore`)
 );
 
 -- ************************************** `Cart`
 
 CREATE TABLE `Cart`
 (
- `idCart`      int NOT NULL ,
+ `idCart`      int NOT NULL AUTO_INCREMENT,
  `idConsumer`  int NOT NULL ,
  `idStaff`     int NOT NULL ,
- `TotalAmount` int NOT NULL ,
+ `TotalAmount` int ,
 
 PRIMARY KEY (`idCart`),
 FOREIGN KEY (`idConsumer`) REFERENCES `Consumer` (`idConsumer`),
@@ -95,8 +96,8 @@ CREATE TABLE `CartItem`
  `idProduct` int NOT NULL ,
  `idCart`    int NOT NULL ,
  `idStore`   int NOT NULL ,
- `Quantity`  int NOT NULL ,
- `Price`     int NOT NULL ,
+ `Quantity`  int ,
+ `Price`     int ,
 
 PRIMARY KEY (`idStore`, `idCart`, `idProduct`),
 FOREIGN KEY (`idProduct`) REFERENCES `Product` (`idProduct`),
