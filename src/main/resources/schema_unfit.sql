@@ -3,7 +3,7 @@
 CREATE TABLE `Store`
 (
  `idStore` int NOT NULL AUTO_INCREMENT,
- `Adress`  varchar(45) NOT NULL ,
+ `Address`  varchar(45) NOT NULL ,
 
 PRIMARY KEY (`idStore`)
 );
@@ -104,14 +104,3 @@ FOREIGN KEY (`idProduct`) REFERENCES `Product` (`idProduct`),
 FOREIGN KEY (`idCart`) REFERENCES `Cart` (`idCart`),
 FOREIGN KEY (`idStore`) REFERENCES `Store` (`idStore`)
 );
-
-
-
-
-
-
-
-
-
-
-
