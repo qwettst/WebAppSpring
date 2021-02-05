@@ -1,6 +1,6 @@
-package dev.qwett.webappspring.Repository;
+package dev.qwett.webappspring.repository;
 
-import dev.qwett.webappspring.Entity.CartItem;
+import dev.qwett.webappspring.entity.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CartItemRepository extends JpaRepository<CartItem, Integer> {

@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.Entity;
+package dev.qwett.webappspring.entity;
 
 import javax.persistence.*;
 
@@ -9,9 +9,6 @@ public class Store {
     private int idStore;
 
     private String address;
-
-    public Store() {
-    }
 
     public int getIdStore() {
         return idStore;

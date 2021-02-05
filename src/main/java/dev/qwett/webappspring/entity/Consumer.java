@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.Entity;
+package dev.qwett.webappspring.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,27 +6,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Staff {
+public class Consumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idStaff;
+    private int idConsumer;
 
     private String firstName;
+
     private String lastName;
-    private int salary;
 
-    private int idStore;
+    private String phone;
 
-    public Staff() {
-
+    public int getIdConsumer() {
+        return idConsumer;
     }
 
-    public int getIdStaff() {
-        return idStaff;
-    }
-
-    public void setIdStaff(int idStaff) {
-        this.idStaff = idStaff;
+    public void setIdConsumer(int idConsumer) {
+        this.idConsumer = idConsumer;
     }
 
     public String getFirstName() {
@@ -45,20 +41,11 @@ public class Staff {
         this.lastName = lastName;
     }
 
-    public int getSalary() {
-        return salary;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-
-    public int getIdStore() {
-        return idStore;
-    }
-
-    public void setIdStore(int idStore) {
-        this.idStore = idStore;
-    }
-
 }

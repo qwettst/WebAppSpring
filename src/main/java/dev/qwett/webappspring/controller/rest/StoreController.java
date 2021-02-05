@@ -1,7 +1,7 @@
-package dev.qwett.webappspring.Controllers.RestController;
+package dev.qwett.webappspring.controller.rest;
 
-import dev.qwett.webappspring.Entity.Store;
 import dev.qwett.webappspring.Service.Store.StoreService;
+import dev.qwett.webappspring.entity.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package dev.qwett.webappspring.Repository;
+package dev.qwett.webappspring.repository;
 
-import dev.qwett.webappspring.Entity.Warehouse;
+import dev.qwett.webappspring.entity.Warehouse;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WarehouseRepository extends JpaRepository<Warehouse, Integer> {

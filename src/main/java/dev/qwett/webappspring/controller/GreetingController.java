@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.Controllers;
+package dev.qwett.webappspring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

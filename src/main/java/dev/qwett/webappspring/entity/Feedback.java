@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.Entity;
+package dev.qwett.webappspring.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +12,12 @@ public class Feedback {
     private int idFeedback;
 
     private String comment;
+
     private int rating;
 
     private int idConsumer;
+
     private int idStore;
-
-    public Feedback() {
-
-    }
 
     public int getIdFeedback() {
         return idFeedback;

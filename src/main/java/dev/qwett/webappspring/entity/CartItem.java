@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.Entity;
+package dev.qwett.webappspring.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,15 +12,14 @@ public class CartItem {
     private int idCartItem;
 
     private int idProduct;
+
     private int idCart;
+
     private int idStore;
 
     private int quantity;
+
     private int price;
-
-    public CartItem() {
-
-    }
 
     public int getIdProduct() {
         return idProduct;
