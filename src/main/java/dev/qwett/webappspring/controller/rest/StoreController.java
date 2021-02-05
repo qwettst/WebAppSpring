@@ -2,7 +2,6 @@ package dev.qwett.webappspring.controller.rest;
 
 import dev.qwett.webappspring.Service.Store.StoreService;
 import dev.qwett.webappspring.entity.Store;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +9,9 @@ import java.util.List;
 @RestController
 @RequestMapping("stores")
 public class StoreController {
+
     private final StoreService storeService;
 
-    @Autowired
     public StoreController(StoreService storeService) {
         this.storeService = storeService;
     }
