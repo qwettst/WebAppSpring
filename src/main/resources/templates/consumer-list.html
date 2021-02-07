@@ -1,37 +1,60 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Список покупателей</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
+
 <div th:switch="${consumers}">
-    <h2>Покупатели</h2>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Phone</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="consumer : ${consumers}">
-            <td th:text="${consumer.idConsumer}"></td>
-            <td th:text="${consumer.firstName}"></td>
-            <td th:text="${consumer.lastName}"></td>
-            <td th:text="${consumer.phone}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <h2 th:case="null">Покупателей нет</h2>
+    <div th:case="*">
+        <h2>Покупатели</h2>
+        <p>
+        <form action="/consumers/add">
+            <input type="submit" value="Добавить нового"/>
+        </form>
+        </p>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="consumer : ${consumers}">
+                <td th:text="${consumer.idConsumer}"></td>
+                <td th:text="${consumer.firstName}"></td>
+                <td th:text="${consumer.lastName}"></td>
+                <td th:text="${consumer.phone}"></td>
+                <td>
+                    <form th:action="@{/consumers/edit/{id}(id=${consumer.idConsumer})}">
+                        <input type="submit" value="Изменить"/>
+                    </form>
+                </td>
+                <td>
+                    <form th:method="delete" th:action="@{/consumers/{id}(id=${consumer.idConsumer})}">
+                        <input type="submit" value="Удалить"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-<form th:method="GET" th:action="@{/consumers/filtered}">
-    <label for="nameInput">Поиск по имени: </label>
-    <input type="text" name="name" id="nameInput"/>
-    <br/>
-    <input type="submit" value="Найти"/>
-</form>
+<div>
+    <p>
+    <form th:method="GET" th:action="@{/consumers/filtered}">
+        <label for="nameInput">Поиск по имени: </label>
+        <input type="text" name="name" id="nameInput"/>
+        <br/>
+        <input type="submit" value="Найти"/>
+    </form>
+    </p>
 </div>
 </body>
 </html>
