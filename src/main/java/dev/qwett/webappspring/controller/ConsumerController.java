@@ -24,29 +24,29 @@ public class ConsumerController {
     public String getAll(Model model) {
         List<Consumer> consumers = consumerService.findAll();
         model.addAttribute("consumers", consumers);
-        return "consumer-list";
+        return "consumers/consumer-list";
     }
 
     @GetMapping({"/filtered"})
     public String getByName(HttpServletRequest request, Model model) {
         List<Consumer> consumers = consumerService.findByName(request.getParameter("name"));
         model.addAttribute("consumers", consumers);
-        return "consumer-list";
+        return "consumers/consumer-list";
     }
 
     @GetMapping({"edit/{id}"})
     public String editConsumer(@PathVariable int id, Model model) {
         Consumer consumer = consumerService.findById(id);
         model.addAttribute("consumer", consumer);
-        return "consumer-edit";
+        return "consumers/consumer-edit";
     }
 
     @GetMapping({"/add"})
     public String addConsumerForm(Consumer consumer) {
-        return "consumer-add";
+        return "consumers/consumer-add";
     }
 
-    @PutMapping("{id}")
+    @PostMapping("{id}")
     public String editConsumer(@PathVariable int id, @ModelAttribute("consumer") Consumer consumer) {
         consumerService.updateConsumer(id, consumer);
         return "redirect:/consumers";
@@ -58,7 +58,7 @@ public class ConsumerController {
         return "redirect:/consumers";
     }
 
-    @PostMapping
+    @PutMapping
     public String addConsumer(@ModelAttribute("consumer") Consumer consumer) {
         consumerService.addConsumer(consumer);
         return "redirect:/consumers";

@@ -36,6 +36,11 @@ class StoreServiceImpl implements StoreService {
         return null;
     }
 
+    @Override
+    public List<Store> findByAddress(String address) {
+        return storeRepository.findByAddress(address);
+    }
+
     public void delete(int id) {
         storeRepository.deleteById(id);
     }
