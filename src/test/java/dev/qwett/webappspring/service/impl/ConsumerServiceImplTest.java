@@ -68,6 +68,9 @@ class ConsumerServiceImplTest {
 
     @Test
     void delete() {
+        int id = any(Integer.class);
+        consumerService.delete(id);
+        Mockito.verify(consumerRepository, Mockito.times(1)).deleteById(id);
     }
 
     @Test
