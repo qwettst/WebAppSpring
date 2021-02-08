@@ -1,7 +1,6 @@
-package dev.qwett.webappspring.Service.Store;
+package dev.qwett.webappspring.service;
 
-import dev.qwett.webappspring.entity.Consumer;
-import dev.qwett.webappspring.entity.Store;
+import dev.qwett.webappspring.entities.Store;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.entity;
+package dev.qwett.webappspring.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,7 +1,7 @@
-package dev.qwett.webappspring.controller;
+package dev.qwett.webappspring.controllers;
 
-import dev.qwett.webappspring.Service.Store.ConsumerService;
-import dev.qwett.webappspring.entity.Consumer;
+import dev.qwett.webappspring.entities.Consumer;
+import dev.qwett.webappspring.service.ConsumerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ public class ConsumerController {
 
     private final ConsumerService consumerService;
 
-    public ConsumerController(ConsumerService consumerService) {
+    ConsumerController(ConsumerService consumerService) {
         this.consumerService = consumerService;
     }
 

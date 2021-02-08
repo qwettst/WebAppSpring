@@ -1,18 +1,18 @@
-package dev.qwett.webappspring.repository;
+package dev.qwett.webappspring.service.impl;
 
-import dev.qwett.webappspring.entity.Consumer;
+import dev.qwett.webappspring.entities.Consumer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ConsumerRepository extends JpaRepository<Consumer, Integer> {
+interface ConsumerRepository extends JpaRepository<Consumer, Integer> {
 
     /**
      * Поиск записей по firstName и lastName
-     * @param name
      *
+     * @param name
      */
     @Query("select main from Consumer main where lower(main.firstName) like lower(concat( '%',:name,'%')) or lower(main.lastName) like lower(concat( '%',:name,'%'))")
     List<Consumer> findByName(@Param("name") String name);

@@ -1,7 +1,7 @@
-package dev.qwett.webappspring.controller;
+package dev.qwett.webappspring.controllers;
 
-import dev.qwett.webappspring.Service.Store.StoreService;
-import dev.qwett.webappspring.entity.Store;
+import dev.qwett.webappspring.entities.Store;
+import dev.qwett.webappspring.service.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class StoreController {
 
     private final StoreService storeService;
 
-    public StoreController(StoreService storeService) {
+    StoreController(StoreService storeService) {
         this.storeService = storeService;
     }
 
