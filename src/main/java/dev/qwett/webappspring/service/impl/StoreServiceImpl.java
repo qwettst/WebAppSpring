@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-class StoreServiceImpl implements StoreService {
+public class StoreServiceImpl implements StoreService {
 
     private static final Logger logger = LoggerFactory.getLogger(StoreService.class);
 
@@ -42,7 +42,7 @@ class StoreServiceImpl implements StoreService {
     public Store updateStore(int id, Store store) {
         store.setIdStore(id);
         logger.info("Updating Store with id = {}", id);
-        if (storeRepository.findById(store.getIdStore()).orElse(null) != null) {
+        if (storeRepository.findById(store.getIdStore()) != null) {
             logger.info("Store id = {}, with Address = {},  was updated", id, store.getAddress());
             return storeRepository.save(store);
         }

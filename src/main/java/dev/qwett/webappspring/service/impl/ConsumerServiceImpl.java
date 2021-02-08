@@ -44,7 +44,7 @@ class ConsumerServiceImpl implements ConsumerService {
     public Consumer updateConsumer(int id, Consumer consumer) {
         consumer.setIdConsumer(id);
         logger.info("Updating Consumer with id = {}", id);
-        if (consumerRepository.findById(consumer.getIdConsumer()).orElse(null) != null) {
+        if (consumerRepository.findById(consumer.getIdConsumer()) != null) {
             logger.info("Consumer id = {},  was updated", id);
             return consumerRepository.save(consumer);
         }
