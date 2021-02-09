@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -29,9 +30,13 @@ public class StoreController {
 
     @GetMapping({"/filtered"})
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
-    public String getByName(HttpServletRequest request, Model model) {
+    public String getByName(HttpServletRequest request, Model model, RedirectAttributes redirAttrs) {
         List<Store> stores = storeService.findByAddress(request.getParameter("address"));
-        model.addAttribute("stores", stores);
+        if (stores == null) {
+            redirAttrs.addFlashAttribute("message", "Поле поиска пустое");
+            return "redirect:/stores";
+        } else
+            model.addAttribute("stores", stores);
         return "stores/store-list";
     }
 
@@ -53,9 +58,13 @@ public class StoreController {
     @PostMapping("{id}")
     @PreAuthorize("hasAnyRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name(), " +
             "T(dev.qwett.webappspring.entities.model.Role).USER.name())")
-    public String editStore(@PathVariable int id, @ModelAttribute("store") Store store) {
-        storeService.updateStore(id, store);
-        return "redirect:/stores";
+    public String editStore(@PathVariable int id, @ModelAttribute("store") Store store, RedirectAttributes redirAttrs) {
+        if (storeService.updateStore(id, store) != null)
+            return "redirect:/stores";
+        else {
+            redirAttrs.addFlashAttribute("message", "Обновление не удалось");
+            return "redirect:/stores/edit/{id}";
+        }
     }
 
     @DeleteMapping("{id}")
@@ -67,8 +76,11 @@ public class StoreController {
 
     @PutMapping
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
-    public String addStore(@ModelAttribute("store") Store store) {
-        storeService.addStore(store);
-        return "redirect:/stores";
+    public String addStore(@ModelAttribute("store") Store store, RedirectAttributes redirAttrs) {
+        if (store.getAddress() != null && !store.getAddress().trim().isEmpty()) {
+            return "redirect:/stores";
+        }
+        redirAttrs.addFlashAttribute("message", "Поле Адрес не должно быть пустым");
+        return "redirect:/stores/add";
     }
 }
