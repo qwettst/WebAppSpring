@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.service.impl;
+package dev.qwett.webappspring.services.impl;
 
 import dev.qwett.webappspring.entities.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;

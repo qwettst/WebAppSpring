@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.service;
+package dev.qwett.webappspring.services;
 
 import dev.qwett.webappspring.entities.Consumer;
 

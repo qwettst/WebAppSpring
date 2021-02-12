@@ -1,7 +1,7 @@
-package dev.qwett.webappspring.service.impl;
+package dev.qwett.webappspring.services.impl;
 
 import dev.qwett.webappspring.entities.Consumer;
-import dev.qwett.webappspring.service.ConsumerService;
+import dev.qwett.webappspring.services.ConsumerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
