@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Изменить магазин</title>
-    <meta http-equiv="Content-Type" content="application/json>">
+    <meta content="application/json>" http-equiv="Content-Type">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div th:switch="${store}">
     <h2 th:case="null">Магазин не найден</h2>
     <div th:case="*">
-        <form th:method="post" th:action="@{/stores/{id}(id=${store.idStore})}" th:object="${store}">
+        <form th:action="@{/stores/{id}(id=${store.idStore})}" th:method="post" th:object="${store}">
             <table border="1">
                 <thead>
                 <tr>
@@ -20,7 +20,7 @@
                 <tbody>
                 <tr>
                     <td th:text="*{idStore}"></td>
-                    <td><input type="text" th:field="*{address}"></td>
+                    <td><input th:field="*{address}" type="text"></td>
                 </tr>
                 </tbody>
             </table>

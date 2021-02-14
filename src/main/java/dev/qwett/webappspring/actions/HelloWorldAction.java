@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.action;
+package dev.qwett.webappspring.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import dev.qwett.webappspring.entities.model.MessageStore;

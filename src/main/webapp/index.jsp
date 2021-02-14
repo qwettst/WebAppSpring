@@ -3,12 +3,12 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Basic Struts 2 Application - Welcome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Basic Struts 2 Application - Welcome</title>
 </head>
 <body>
 <h1>Welcome To Struts 2!</h1>
-<p><a href="<s:url action='hello'/>">Hello World   3</a></p>
-<p><a href='<s:url action="edit" />' >Edit your information</a></p>
+<p><a href="<s:url action='stores'/>">Stores</a></p>
+<p><a href='<s:url action="consumers" />'>Consumers</a></p>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Список магазинов</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
@@ -36,7 +36,7 @@
                 </td>
                 <div sec:authorize="hasRole('ADMIN')">
                     <td>
-                        <form th:method="delete" th:action="@{/stores/{id}(id=${store.idStore})}">
+                        <form th:action="@{/stores/{id}(id=${store.idStore})}" th:method="delete">
                             <input type="submit" value="Удалить"/>
                         </form>
                     </td>
@@ -48,9 +48,9 @@
 </div>
 <div sec:authorize="hasRole('ADMIN')">
     <p>
-    <form th:method="GET" th:action="@{/stores/filtered}">
+    <form th:action="@{/stores/filtered}" th:method="GET">
         <label for="nameInput">Поиск по имени: </label>
-        <input type="text" name="address" id="nameInput"/>
+        <input id="nameInput" name="address" type="text"/>
         <br/>
         <input type="submit" value="Найти"/>
     </form>

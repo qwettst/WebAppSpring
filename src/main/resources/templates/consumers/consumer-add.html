@@ -2,19 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Изменить покупателя</title>
-    <meta http-equiv="Content-Type" content="application/json>">
+    <meta content="application/json>" http-equiv="Content-Type">
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div>
     <h2>Добавить покупателя</h2>
-    <form th:method="put" th:action="@{/consumers}" th:object="${consumer}">
+    <form th:action="@{/consumers}" th:method="put" th:object="${consumer}">
         <label for="firstName">Фамилия</label>
-        <input type="text" th:field="*{firstName}" id="firstName" placeholder="Фамилия">
+        <input id="firstName" placeholder="Фамилия" th:field="*{firstName}" type="text">
         <label for="lastName">Имя</label>
-        <input type="text" th:field="*{lastName}" id="lastName" placeholder="Имя">
+        <input id="lastName" placeholder="Имя" th:field="*{lastName}" type="text">
         <label for="phone">Телефон</label>
-        <input type="text" th:field="*{phone}" id="phone" placeholder="телефон">
+        <input id="phone" placeholder="телефон" th:field="*{phone}" type="text">
         <input type="submit" value="Добавить покупателя">
     </form>
 </div>

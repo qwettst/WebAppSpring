@@ -1,4 +1,4 @@
-package dev.qwett.webappspring.action;
+package dev.qwett.webappspring.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import dev.qwett.webappspring.entities.model.Person;
@@ -12,18 +12,12 @@ import java.util.List;
 public class EditAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
-
-    private EditService editService;
-
-    private Person personBean;
-
     private final String[] sports = {"football", "baseball", "basketball"};
-
     private final String[] genders = {"male", "female", "not sure"};
-
-    private List<State> states;
-
     private final String[] carModelsAvailable = {"Ford", "Chrysler", "Toyota", "Nissan"};
+    private EditService editService;
+    private Person personBean;
+    private List<State> states;
 
     public String execute() throws Exception {
 

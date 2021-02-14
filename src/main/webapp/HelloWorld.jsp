@@ -7,6 +7,6 @@
     <title>Hello World!</title>
 </head>
 <body>
-<h2><s:property value="messageStore.message" /></h2>
+<h2><s:property value="messageStore.message"/></h2>
 </body>
 </html>
