@@ -19,7 +19,7 @@ VALUES
 -- ************************************** `Warehouse`
 
 INSERT INTO Warehouse
-  ( id_Store, Quantity, id_Product)
+  ( idStore, Quantity, idProduct)
 VALUES
   (1, 20, 1),
   (2, 15, 1),
@@ -30,7 +30,7 @@ VALUES
 -- ************************************** `Staff`
 
 INSERT INTO Staff
-  ( First_Name, Last_Name, Salary, id_Store)
+  ( FirstName, LastName, Salary, idStore)
 VALUES
   ('Petya', 'Petrov', 20000, 1),
   ('Ivan', 'Ivanov', 5000, 1),
@@ -42,7 +42,7 @@ VALUES
 -- ************************************** `Consumer`
 
 INSERT INTO Consumer
-  ( First_Name, Last_Name, Phone)
+  ( FirstName, LastName, Phone)
 VALUES
   ('Pokupatel_1', 'Petrov', 1324234),
   ('Pokupatel_2', 'Ivanov', 321411),
@@ -51,7 +51,7 @@ VALUES
 -- ************************************** `Feedback`
 
 INSERT INTO Feedback
-  ( Comment, Rating, id_Consumer, id_Store)
+  ( Comment, Rating, idConsumer, idStore)
 VALUES
   ('Klass', 5, 1, 1),
   ('Kruto', 3, 1, 2),
@@ -60,7 +60,7 @@ VALUES
 -- ************************************** `Cart`
 
 INSERT INTO Cart
-  ( id_Consumer, id_Staff, Total_Amount)
+  ( idConsumer, idStaff, TotalAmount)
 VALUES
   (1, 2, 0),
   (1, 3, 0),
@@ -68,8 +68,8 @@ VALUES
 
 -- ************************************** `CartItem`
 
-INSERT INTO Cart_Item
-  ( id_Product, id_Cart, id_Store, Quantity, Price)
+INSERT INTO CartItem
+  ( idProduct, idCart, idStore, Quantity, Price)
 VALUES
   (1, 1, 3, 20, 150),
   (2, 1, 3, 20, 200),

@@ -4,15 +4,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import dev.qwett.webappspring.entities.model.MessageStore;
 import dev.qwett.webappspring.services.StoreService;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 
-@Component
 public class HelloWorldAction extends ActionSupport {
 
-    private MessageStore messageStore;
-
     private final StoreService storeService;
+    private MessageStore messageStore;
 
     public HelloWorldAction(@Qualifier("storeServiceImpl") StoreService storeService) {
         this.storeService = storeService;

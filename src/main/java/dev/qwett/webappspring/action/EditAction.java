@@ -17,13 +17,13 @@ public class EditAction extends ActionSupport {
 
     private Person personBean;
 
-    private String[] sports = {"football", "baseball", "basketball"};
+    private final String[] sports = {"football", "baseball", "basketball"};
 
-    private String[] genders = {"male", "female", "not sure"};
+    private final String[] genders = {"male", "female", "not sure"};
 
     private List<State> states;
 
-    private String[] carModelsAvailable = {"Ford", "Chrysler", "Toyota", "Nissan"};
+    private final String[] carModelsAvailable = {"Ford", "Chrysler", "Toyota", "Nissan"};
 
     public String execute() throws Exception {
 
