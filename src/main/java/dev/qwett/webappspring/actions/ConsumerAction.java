@@ -11,6 +11,8 @@ public class ConsumerAction extends ActionSupport {
     private final ConsumerService consumerService;
     private List<Consumer> consumerList;
     private Consumer consumer;
+    private int idConsumer;
+    private String consumerName;
 
     public ConsumerAction(ConsumerService consumerService) {
         this.consumerService = consumerService;
@@ -23,6 +25,26 @@ public class ConsumerAction extends ActionSupport {
 
     public String add() {
         consumerService.addConsumer(consumer);
+        return SUCCESS;
+    }
+
+    public String delete() {
+        consumerService.delete(idConsumer);
+        return SUCCESS;
+    }
+
+    public String edit() {
+        consumerService.updateConsumer(idConsumer, consumer);
+        return SUCCESS;
+    }
+
+    public String getByName() {
+        setConsumerList(consumerService.findByName(consumerName));
+        return SUCCESS;
+    }
+
+    public String getById() {
+        consumer = consumerService.findById(idConsumer);
         return SUCCESS;
     }
 
@@ -42,7 +64,19 @@ public class ConsumerAction extends ActionSupport {
         this.consumer = consumer;
     }
 
-    public ConsumerService getConsumerService() {
-        return consumerService;
+    public int getIdConsumer() {
+        return idConsumer;
+    }
+
+    public void setIdConsumer(int idConsumer) {
+        this.idConsumer = idConsumer;
+    }
+
+    public String getConsumerName() {
+        return consumerName;
+    }
+
+    public void setConsumerName(String consumerName) {
+        this.consumerName = consumerName;
     }
 }

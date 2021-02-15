@@ -12,11 +12,14 @@
 
 <s:if test="storeList.size == 0">
     <h2>Магазинов нет</h2>
+    <form action="stores/addForm">
+        <input type="submit" value="Добавить новый"/>
+    </form>
 </s:if>
 <s:else>
     <h2>Магазины</h2>
     <p>
-    <form action="addStoreForm">
+    <form action="stores/addForm">
         <input type="submit" value="Добавить новый"/>
     </form>
     </p>
@@ -32,10 +35,17 @@
             <tr>
                 <td><s:property value="idStore"/></td>
                 <td><s:property value="address"/></td>
+                <td><a href="<s:url action="edit-%{idStore}" />">Изменить</a></td>
+                <td><a href="<s:url action="delete-%{idStore}" />">Удалить</a></td>
             </tr>
         </s:iterator>
         </tbody>
     </table>
+
+    <s:form action="getByAddress" method="get">
+        <s:textfield name="storeAddress" label="Поиск по имени"/>
+        <s:submit value="Найти"/>
+    </s:form>
 </s:else>
 </body>
 </html>

@@ -5,14 +5,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="../resources/css/style.css" rel="stylesheet" type="text/css">
     <title>Добавление покупателя</title>
 </head>
 <body>
-<s:form action="addConsumer" method="put">
-    <s:textfield name="consumer.firstName" label="Фамилия"/>
-    <s:textfield name="consumer.lastName" label="Имя"/>
-    <s:textfield name="consumer.phone" label="Телефон"/>
+<s:form action="add" method="put">
+    <s:textfield name="consumer.firstName" label="Фамилия" value="%{consumer.firstName}"/>
+    <s:textfield name="consumer.lastName" label="Имя" value="%{consumer.lastName}"/>
+    <s:textfield name="consumer.phone" label="Телефон" value="%{consumer.phone}"/>
     <s:submit value="Добавить"/>
 </s:form>
 </body>

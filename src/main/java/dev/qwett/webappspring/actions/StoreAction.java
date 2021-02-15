@@ -12,6 +12,8 @@ public class StoreAction extends ActionSupport {
     private final StoreService storeService;
     private List<Store> storeList;
     private Store store;
+    private int idStore;
+    private String storeAddress;
 
     public StoreAction(StoreService storeService) {
         this.storeService = storeService;
@@ -25,6 +27,42 @@ public class StoreAction extends ActionSupport {
     public String add() {
         storeService.addStore(store);
         return SUCCESS;
+    }
+
+    public String edit() {
+        storeService.updateStore(idStore, store);
+        return SUCCESS;
+    }
+
+    public String delete() {
+        storeService.delete(idStore);
+        return SUCCESS;
+    }
+
+    public String getByAddress() {
+        setStoreList(storeService.findByAddress(storeAddress));
+        return SUCCESS;
+    }
+
+    public String findById() {
+        setStore(storeService.findById(idStore));
+        return SUCCESS;
+    }
+
+    public int getIdStore() {
+        return idStore;
+    }
+
+    public void setIdStore(int idStore) {
+        this.idStore = idStore;
+    }
+
+    public String getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
     }
 
     public List<Store> getStoreList() {

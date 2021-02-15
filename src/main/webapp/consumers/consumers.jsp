@@ -10,16 +10,23 @@
 </head>
 <body>
 
-<s:if test="storeList.size == 0">
+<s:if test="consumerList.size == 0">
     <h2>Покупателей нет</h2>
-</s:if>
-<s:else>
-    <h2>Покупатели</h2>
     <p>
-    <form action="addConsumerForm">
+    <form action="consumers/addForm">
         <input type="submit" value="Добавить нового"/>
     </form>
     </p>
+</s:if>
+<s:else>
+    <h2>Покупатели</h2>
+
+    <p>
+    <form action="consumers/addForm">
+        <input type="submit" value="Добавить нового"/>
+    </form>
+    </p>
+
     <table border="1">
         <thead>
         <tr>
@@ -36,10 +43,18 @@
                 <td><s:property value="firstName"/></td>
                 <td><s:property value="lastName"/></td>
                 <td><s:property value="phone"/></td>
+                <td><a href="<s:url action="edit-%{idConsumer}" />">Изменить</a></td>
+                <td><a href="<s:url action="delete-%{idConsumer}" />">Удалить</a></td>
             </tr>
         </s:iterator>
         </tbody>
     </table>
+
+    <s:form action="getByName" method="get">
+        <s:textfield name="consumerName" label="Поиск по имени"/>
+        <s:submit value="Найти"/>
+    </s:form>
+
 </s:else>
 </body>
 </html>

@@ -8,9 +8,10 @@
     <title>Изменение магазина</title>
 </head>
 <body>
-<s:form action="add" method="put">
-    <s:textfield name="store.address" label="Адрес"/>
-    <s:submit value="Добавить"/>
+<s:form action="edit" method="post">
+    <s:hidden name="idStore" value="%{idStore}"/>
+    <s:textfield label="Адресс" name="store.address" value="%{store.address}"/>
+    <s:submit value="Изменить"/>
 </s:form>
 </body>
 </html>
