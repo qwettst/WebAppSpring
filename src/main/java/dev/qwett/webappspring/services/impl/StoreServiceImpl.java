@@ -4,6 +4,7 @@ import dev.qwett.webappspring.entities.Store;
 import dev.qwett.webappspring.services.StoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class StoreServiceImpl implements StoreService {
         this.storeRepository = storeRepository;
     }
 
+    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public List<Store> findAll() {
         logger.info("Search all records in database");
         return storeRepository.findAll();

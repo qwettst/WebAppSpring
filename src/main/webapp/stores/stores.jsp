@@ -35,8 +35,14 @@
             <tr>
                 <td><s:property value="idStore"/></td>
                 <td><s:property value="address"/></td>
-                <td><a href="<s:url action="edit-%{idStore}" />">Изменить</a></td>
-                <td><a href="<s:url action="delete-%{idStore}" />">Удалить</a></td>
+                <td><a href="<s:url action="editForm">
+                        <s:param name="idStore" value="idStore"/>
+                    </s:url>">Изменить</a>
+                </td>
+                <td><a href="<s:url action="delete">
+                        <s:param name="idStore" value="idStore"/>
+                    </s:url>">Удалить</a>
+                </td>
             </tr>
         </s:iterator>
         </tbody>

@@ -39,13 +39,33 @@ public class ConsumerAction extends ActionSupport {
     }
 
     public String getByName() {
-        setConsumerList(consumerService.findByName(consumerName));
-        return SUCCESS;
+        if (consumerName != null && !consumerName.trim().isEmpty()) {
+            setConsumerList(consumerService.findByName(consumerName));
+            return SUCCESS;
+        }
+        addActionError("Field address is empty");
+        return ERROR;
     }
 
     public String getById() {
         consumer = consumerService.findById(idConsumer);
         return SUCCESS;
+    }
+
+    public void validate() {
+        if (consumer != null) {
+            if (consumer.getFirstName().length() == 0) {
+                addFieldError("consumer.firstName", "das");
+            }
+
+            if (consumer.getLastName().length() == 0) {
+                addFieldError("consumer.lastName", "Требуется ввести Фамилию");
+            }
+
+            if (consumer.getPhone().length() == 0) {
+                addFieldError("consumer.phone", "Требуестся ввести номер телефона");
+            }
+        }
     }
 
     public List<Consumer> getConsumerList() {

@@ -5,6 +5,7 @@ import dev.qwett.webappspring.entities.Store;
 import java.util.List;
 
 public interface StoreService {
+
     List<Store> findAll();
 
     Store findById(int id);

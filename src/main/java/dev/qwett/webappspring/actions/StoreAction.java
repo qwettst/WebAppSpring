@@ -44,9 +44,17 @@ public class StoreAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String findById() {
-        setStore(storeService.findById(idStore));
+    public String getById() {
+        store = storeService.findById(idStore);
         return SUCCESS;
+    }
+
+    public void validate() {
+        if (store != null) {
+            if (store.getAddress().length() == 0) {
+                addFieldError("store.address", "Требуется ввести Адрес");
+            }
+        }
     }
 
     public int getIdStore() {
