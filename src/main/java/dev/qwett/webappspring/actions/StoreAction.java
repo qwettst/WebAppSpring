@@ -52,7 +52,7 @@ public class StoreAction extends ActionSupport {
     public void validate() {
         if (store != null) {
             if (store.getAddress().length() == 0) {
-                addFieldError("store.address", "Требуется ввести Адрес");
+                addFieldError("store.address", "The Address is required");
             }
         }
     }

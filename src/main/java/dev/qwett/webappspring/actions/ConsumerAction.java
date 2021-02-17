@@ -43,7 +43,8 @@ public class ConsumerAction extends ActionSupport {
             setConsumerList(consumerService.findByName(consumerName));
             return SUCCESS;
         }
-        addActionError("Field address is empty");
+        setConsumerList(consumerService.findAll());
+        addActionError("Field is empty");
         return ERROR;
     }
 
@@ -55,15 +56,15 @@ public class ConsumerAction extends ActionSupport {
     public void validate() {
         if (consumer != null) {
             if (consumer.getFirstName().length() == 0) {
-                addFieldError("consumer.firstName", "das");
+                addFieldError("consumer.firstName", "The first name is required");
             }
 
             if (consumer.getLastName().length() == 0) {
-                addFieldError("consumer.lastName", "Требуется ввести Фамилию");
+                addFieldError("consumer.lastName", "The last name is required");
             }
 
             if (consumer.getPhone().length() == 0) {
-                addFieldError("consumer.phone", "Требуестся ввести номер телефона");
+                addFieldError("consumer.phone", "Phone number is required");
             }
         }
     }

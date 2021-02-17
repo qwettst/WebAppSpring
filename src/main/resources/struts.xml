@@ -12,9 +12,11 @@
         <action name="index">
             <result>/index.jsp</result>
         </action>
+
+        <action name="login">
+            <result>/login.jsp</result>
+        </action>
     </package>
-
-
 
     <!--   CONSUMERS        -->
     <package name="consumers" namespace="/consumers" extends="struts-default">
@@ -80,7 +82,6 @@
         </action>
 
         <action name="delete" class="dev.qwett.webappspring.actions.StoreAction" method="delete">
-            <param name="idStore">{1}</param>
             <result name="success" type="redirect">/stores/</result>
         </action>
 

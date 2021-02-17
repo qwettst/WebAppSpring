@@ -20,7 +20,6 @@ public class StoreServiceImpl implements StoreService {
         this.storeRepository = storeRepository;
     }
 
-    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public List<Store> findAll() {
         logger.info("Search all records in database");
         return storeRepository.findAll();
