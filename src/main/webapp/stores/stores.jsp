@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,20 +12,16 @@
 
 <s:if test="storeList.size == 0">
     <h2>Магазинов нет</h2>
-    <div sec:authorize="hasRole('ADMIN')">
         <form action="stores/addForm">
             <input type="submit" value="Добавить новый"/>
         </form>
-    </div>
 </s:if>
 <s:else>
     <h2>Магазины</h2>
     <p>
-    <div sec:authorize="hasRole('ADMIN')">
         <form action="stores/addForm">
             <input type="submit" value="Добавить новый"/>
         </form>
-    </div>
     </p>
     <table border="1">
         <thead>

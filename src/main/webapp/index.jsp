@@ -8,7 +8,8 @@
 </head>
 <body>
 <h1>Welcome To Struts 2!</h1>
-<p><a href="<s:url action="stores/stores"/>">Stores</a></p>
-<p><a href="<s:url action="consumers/consumers"/>">Consumers</a></p>
+<p><a href="<s:url action="/stores/stores"/>">Stores</a></p>
+<p><a href="<s:url action="/consumers/consumers"/>">Consumers</a></p>
+<p><a href="<s:url action="index"/>">Main page</a></p>
 </body>
 </html>

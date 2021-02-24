@@ -19,7 +19,6 @@ class ConsumerServiceImpl implements ConsumerService {
         this.consumerRepository = consumerRepository;
     }
 
-
     public List<Consumer> findAll() {
         logger.info("Search all records in database");
         return consumerRepository.findAll();
