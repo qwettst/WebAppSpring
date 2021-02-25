@@ -13,13 +13,11 @@ public class StoreServiceImpl implements StoreService {
 
     private static final Logger logger = LoggerFactory.getLogger(StoreService.class);
 
-    private StoreRepository storeRepository;
+    private final StoreRepository storeRepository;
 
-//    private final StoreRepository storeRepository;
-//
-//    StoreServiceImpl(StoreRepository storeRepository) {
-//        this.storeRepository = storeRepository;
-//    }
+    StoreServiceImpl(StoreRepository storeRepository) {
+        this.storeRepository = storeRepository;
+    }
 
     public List<Store> findAll() {
         logger.info("Search all records in database");

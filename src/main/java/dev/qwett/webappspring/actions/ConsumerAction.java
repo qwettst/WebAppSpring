@@ -19,7 +19,7 @@ public class ConsumerAction extends ActionSupport {
     }
 
     public String execute() {
-//        setConsumerList(consumerService.findAll());
+        setConsumerList(consumerService.findAll());
         return SUCCESS;
     }
 
