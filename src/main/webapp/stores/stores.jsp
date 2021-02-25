@@ -12,14 +12,14 @@
 
 <s:if test="storeList.size == 0">
     <h2>Магазинов нет</h2>
-        <form action="stores/addForm">
+        <form action="<s:url namespace="/stores" action="addForm"/>">
             <input type="submit" value="Добавить новый"/>
         </form>
 </s:if>
 <s:else>
     <h2>Магазины</h2>
     <p>
-        <form action="<s:url action="/stores/addForm"/>">
+        <form action="<s:url namespace="/stores" action="addForm"/>">
             <input type="submit" value="Добавить новый"/>
         </form>
     </p>
@@ -35,11 +35,11 @@
             <tr>
                 <td><s:property value="idStore"/></td>
                 <td><s:property value="address"/></td>
-                <td><a href="<s:url action="editForm">
+                <td><a href="<s:url namespace="/stores" action="editForm">
                         <s:param name="idStore" value="idStore"/>
                     </s:url>">Изменить</a>
                 </td>
-                <td><a href="<s:url action="delete">
+                <td><a href="<s:url namespace="/stores" action="delete">
                         <s:param name="idStore" value="idStore"/>
                     </s:url>">Удалить</a>
                 </td>
@@ -48,11 +48,11 @@
         </tbody>
     </table>
 
-    <s:form action="getByAddress" method="get">
+    <s:form namespace="/stores" action="getByAddress" method="get">
         <s:textfield name="storeAddress" label="Поиск по имени"/>
         <s:submit value="Найти"/>
     </s:form>
 </s:else>
-<p><a href="<s:url action="index"/>">Main page</a></p>
+<p><a href="<s:url namespace="/" action="index"/>">Main page</a></p>
 </body>
 </html>

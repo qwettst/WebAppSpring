@@ -4,7 +4,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import dev.qwett.webappspring.entities.Consumer;
 import dev.qwett.webappspring.services.ConsumerService;
 
-import javax.portlet.PortletPreferences;
 import java.util.List;
 
 public class ConsumerAction extends ActionSupport {

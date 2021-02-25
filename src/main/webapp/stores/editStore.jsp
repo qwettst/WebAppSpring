@@ -8,7 +8,7 @@
     <title>Изменение магазина</title>
 </head>
 <body>
-<s:form action="edit" method="post">
+<s:form namespace="/stores" action="edit" method="post">
     <s:hidden name="idStore" value="%{idStore}"/>
     <s:textfield label="Адресс" name="store.address" value="%{store.address}"/>
     <s:submit value="Изменить"/>

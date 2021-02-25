@@ -8,7 +8,7 @@
     <title>Изменение магазина</title>
 </head>
 <body>
-<s:form action="add" method="put">
+<s:form namespace="/stores" action="add" method="put">
     <s:textfield name="store.address" label="Адрес"/>
     <s:submit value="Добавить"/>
 </s:form>

@@ -13,7 +13,7 @@
 <s:if test="consumerList.size == 0">
     <h2>Покупателей нет</h2>
     <p>
-    <form action="consumers/addForm">
+    <form action="<s:url namespace="/consumers" action="addForm"/>">
         <input type="submit" value="Добавить нового"/>
     </form>
     </p>
@@ -22,7 +22,7 @@
     <h2>Покупатели</h2>
 
     <p>
-    <form action="consumers/addForm">
+    <form action="<s:url namespace="/consumers" action="addForm"/>">
         <input type="submit" value="Добавить нового"/>
     </form>
     </p>
@@ -43,11 +43,11 @@
                 <td><s:property value="firstName"/></td>
                 <td><s:property value="lastName"/></td>
                 <td><s:property value="phone"/></td>
-                <td><a href="<s:url action="editForm">
+                <td><a href="<s:url namespace="/consumers" action="editForm">
                         <s:param name="idConsumer" value="idConsumer"/>
                     </s:url>">Изменить</a>
                 </td>
-                <td><a href="<s:url action="delete">
+                <td><a href="<s:url namespace="/consumers" action="delete">
                         <s:param name="idConsumer" value="idConsumer"/>
                     </s:url>">Удалить</a>
                 </td>
@@ -58,11 +58,11 @@
 
     <s:actionerror/>
 
-    <s:form action="getByName" method="get">
+    <s:form namespace="/consumers" action="getByName" method="get">
         <s:textfield name="consumerName" label="Поиск по имени"/>
         <s:submit value="Найти"/>
     </s:form>
-
 </s:else>
+<p><a href="<s:url namespace="/" action="index"/>">Main page</a></p>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <title>Добавление покупателя</title>
 </head>
 <body>
-<s:form action="add" method="put">
+<s:form namespace="/consumers" action="add" method="put">
     <s:textfield name="consumer.firstName" label="Фамилия" value="%{consumer.firstName}"/>
     <s:textfield name="consumer.lastName" label="Имя" value="%{consumer.lastName}"/>
     <s:textfield name="consumer.phone" label="Телефон" value="%{consumer.phone}"/>

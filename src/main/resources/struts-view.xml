@@ -10,13 +10,5 @@
         <action name="login">
             <result>/login.jsp</result>
         </action>
-
-        <action name="stores" class="dev.qwett.webappspring.actions.StoreAction" method="execute">
-            <result type="redirectAction">
-                <param name="actionName">stores</param>
-                <param name="portletMode">view</param>
-            </result>
-            <result name="success">/stores/stores.jsp</result>
-        </action>
     </package>
 </struts>
