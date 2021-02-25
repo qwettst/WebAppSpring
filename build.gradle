@@ -13,40 +13,39 @@ repositories {
 
 dependencies {
     implementation 'junit:junit:4.12'
-    implementation 'junit:junit:4.12'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testCompile group: 'junit', name: 'junit', version: '4.11'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '3.7.7'
 
-    compile group: 'org.apache.struts', name: 'struts2-core', version: '2.5.26'
-    compile group: 'org.apache.struts', name: 'struts2-spring-plugin', version: '2.5.26'
+    implementation group: 'org.apache.struts', name: 'struts2-core', version: '2.5.26'
+    implementation group: 'org.apache.struts', name: 'struts2-spring-plugin', version: '2.5.26'
     implementation group: 'org.apache.struts', name: 'struts2-portlet-plugin', version: '2.5.26'
     providedCompile group: 'org.apache.portals', name: 'portlet-api_2.0_spec', version: '1.0'
     providedCompile group: 'org.apache.pluto', name: 'pluto', version: '1.1.7', ext: 'pom'
 
     implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.4.5'
-    compile group: 'org.springframework', name: 'spring-aop', version: '5.3.3'
-    compile group: 'org.springframework', name: 'spring-core', version: '5.3.3'
-    compile group: 'org.springframework', name: 'spring-web', version: '5.3.3'
-    compile group: 'org.springframework', name: 'spring-context', version: '5.3.3'
-    compile group: 'org.springframework', name: 'spring-beans', version: '5.3.3'
-    compile group: 'org.springframework', name: 'spring-expression', version: '5.3.3'
-    compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+    implementation group: 'org.springframework', name: 'spring-aop', version: '5.3.3'
+    implementation group: 'org.springframework', name: 'spring-core', version: '5.3.3'
+    implementation group: 'org.springframework', name: 'spring-web', version: '5.3.3'
+    implementation group: 'org.springframework', name: 'spring-context', version: '5.3.3'
+    implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.3'
+    implementation group: 'org.springframework', name: 'spring-expression', version: '5.3.3'
+    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 
-    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.8.0'
+    implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.8.0'
     implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.28.Final'
-    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
 
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
-    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.14.0'
+
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.14.0'
     implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.4.4'
     implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.4.4'
     implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.4.4'
     implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.4.4'
-    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 }
 
 test {

@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import dev.qwett.webappspring.entities.Consumer;
 import dev.qwett.webappspring.services.ConsumerService;
 
+import javax.portlet.PortletPreferences;
 import java.util.List;
 
 public class ConsumerAction extends ActionSupport {
@@ -19,7 +20,7 @@ public class ConsumerAction extends ActionSupport {
     }
 
     public String execute() {
-        setConsumerList(consumerService.findAll());
+//        setConsumerList(consumerService.findAll());
         return SUCCESS;
     }
 
@@ -100,4 +101,5 @@ public class ConsumerAction extends ActionSupport {
     public void setConsumerName(String consumerName) {
         this.consumerName = consumerName;
     }
+
 }

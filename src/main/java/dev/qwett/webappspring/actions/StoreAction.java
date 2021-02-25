@@ -20,7 +20,7 @@ public class StoreAction extends ActionSupport {
     }
 
     public String execute() {
-        setStoreList(storeService.findAll());
+//        setStoreList(storeService.findAll());
         return SUCCESS;
     }
 
@@ -88,4 +88,5 @@ public class StoreAction extends ActionSupport {
     public void setStore(Store store) {
         this.store = store;
     }
+
 }

@@ -13,6 +13,11 @@
         <portlet-class>org.apache.struts2.portlet.dispatcher.Jsr286Dispatcher</portlet-class>
 
         <init-param>
+            <name>actionPackages</name>
+            <value>dev.qwett.webappspring.actions</value>
+        </init-param>
+
+        <init-param>
             <name>viewNamespace</name>
             <value>/</value>
         </init-param>
@@ -33,7 +38,6 @@
             <short-title>Hello World</short-title>
             <keywords>Hello,pluto</keywords>
         </portlet-info>
-
-
     </portlet>
+
 </portlet-app>

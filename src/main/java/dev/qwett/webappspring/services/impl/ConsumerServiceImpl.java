@@ -13,11 +13,13 @@ class ConsumerServiceImpl implements ConsumerService {
 
     private static final Logger logger = LoggerFactory.getLogger(ConsumerService.class);
 
-    private final ConsumerRepository consumerRepository;
+    private ConsumerRepository consumerRepository;
 
-    ConsumerServiceImpl(ConsumerRepository consumerRepository) {
-        this.consumerRepository = consumerRepository;
-    }
+//    private final ConsumerRepository consumerRepository;
+//
+//    ConsumerServiceImpl(ConsumerRepository consumerRepository) {
+//        this.consumerRepository = consumerRepository;
+//    }
 
     public List<Consumer> findAll() {
         logger.info("Search all records in database");

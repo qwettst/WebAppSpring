@@ -19,7 +19,7 @@
 <s:else>
     <h2>Магазины</h2>
     <p>
-        <form action="stores/addForm">
+        <form action="<s:url action="/stores/addForm"/>">
             <input type="submit" value="Добавить новый"/>
         </form>
     </p>
@@ -53,5 +53,6 @@
         <s:submit value="Найти"/>
     </s:form>
 </s:else>
+<p><a href="<s:url action="index"/>">Main page</a></p>
 </body>
 </html>
