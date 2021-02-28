@@ -55,15 +55,15 @@ public class ConsumerAction extends ActionSupport {
 
     public void validate() {
         if (consumer != null) {
-            if (consumer.getFirstName().length() == 0) {
+            if (consumer.getFirstName().length() == 0 && consumer.getFirstName().trim().isEmpty()) {
                 addFieldError("consumer.firstName", "The first name is required");
             }
 
-            if (consumer.getLastName().length() == 0) {
+            if (consumer.getLastName().length() == 0 && consumer.getLastName().trim().isEmpty()) {
                 addFieldError("consumer.lastName", "The last name is required");
             }
 
-            if (consumer.getPhone().length() == 0) {
+            if (consumer.getPhone().length() == 0 && consumer.getPhone().trim().isEmpty()) {
                 addFieldError("consumer.phone", "Phone number is required");
             }
         }

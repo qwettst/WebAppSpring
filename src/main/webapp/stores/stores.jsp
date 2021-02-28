@@ -48,6 +48,8 @@
         </tbody>
     </table>
 
+    <s:actionerror/>
+
     <s:form namespace="/stores" action="getByAddress" method="get">
         <s:textfield name="storeAddress" label="Поиск по имени"/>
         <s:submit value="Найти"/>

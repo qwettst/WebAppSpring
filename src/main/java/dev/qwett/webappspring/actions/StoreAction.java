@@ -6,7 +6,6 @@ import dev.qwett.webappspring.services.StoreService;
 
 import java.util.List;
 
-
 public class StoreAction extends ActionSupport {
 
     private final StoreService storeService;
@@ -40,8 +39,13 @@ public class StoreAction extends ActionSupport {
     }
 
     public String getByAddress() {
-        setStoreList(storeService.findByAddress(storeAddress));
-        return SUCCESS;
+        if (storeAddress != null && !storeAddress.trim().isEmpty()) {
+            setStoreList(storeService.findByAddress(storeAddress));
+            return SUCCESS;
+        }
+        setStoreList(storeService.findAll());
+        addActionError("Field is empty");
+        return ERROR;
     }
 
     public String getById() {
@@ -51,7 +55,7 @@ public class StoreAction extends ActionSupport {
 
     public void validate() {
         if (store != null) {
-            if (store.getAddress().length() == 0) {
+            if (store.getAddress().length() == 0 && store.getAddress().trim().isEmpty()) {
                 addFieldError("store.address", "The Address is required");
             }
         }

@@ -8,10 +8,6 @@
         <default-action-ref name="stores"/>
 
         <action name="stores" class="dev.qwett.webappspring.actions.StoreAction" method="execute">
-            <result type="redirectAction">
-                <param name="actionName">stores</param>
-                <param name="portletMode">view</param>
-            </result>
             <result name="success">/stores/stores.jsp</result>
         </action>
 
@@ -26,20 +22,21 @@
 
         <action name="edit" class="dev.qwett.webappspring.actions.StoreAction" method="edit">
             <result name="input">/stores/editStore.jsp</result>
-            <result name="success" type="redirect">/stores/</result>
+            <result name="success" type="redirect">/stores/stores.action</result>
         </action>
 
         <action name="delete" class="dev.qwett.webappspring.actions.StoreAction" method="delete">
-            <result name="success" type="redirect">/stores/</result>
+            <result name="success" type="redirect">/stores</result>
         </action>
 
         <action name="add" class="dev.qwett.webappspring.actions.StoreAction" method="add">
             <result name="input">/stores/addStore.jsp</result>
-            <result name="success" type="redirect">/stores/</result>
+            <result name="success" type="redirect">/stores/stores.action</result>
         </action>
 
         <action name="getByAddress" class="dev.qwett.webappspring.actions.StoreAction" method="getByAddress">
             <result name="success">/stores/stores.jsp</result>
+            <result name="error">/stores/stores.jsp</result>
         </action>
 
     </package>
