@@ -1,27 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="../resources/css/style.css" rel="stylesheet" type="text/css">
+    <link href="<s:url value="/resources/style.css"/> " rel="stylesheet" type="text/css">
     <title>Список магазинов</title>
 </head>
 <body>
 
 <s:if test="storeList.size == 0">
     <h2>Магазинов нет</h2>
+    <sec:authorize access="hasRole('ADMIN')">
         <form action="<s:url namespace="/stores" action="addForm"/>">
             <input type="submit" value="Добавить новый"/>
         </form>
+    </sec:authorize>
 </s:if>
 <s:else>
     <h2>Магазины</h2>
     <p>
+    <sec:authorize access="hasRole('ADMIN')">
         <form action="<s:url namespace="/stores" action="addForm"/>">
             <input type="submit" value="Добавить новый"/>
         </form>
+    </sec:authorize>
     </p>
     <table border="1">
         <thead>

@@ -11,5 +11,6 @@
 <p><a href="<s:url namespace="/stores" action="stores"/>">Stores</a></p>
 <p><a href="<s:url namespace="/consumers" action="consumers"/>">Consumers</a></p>
 <p><a href="<s:url action="index"/>">Main page</a></p>
+<p><a href="<s:url action="loginForm"/>">Login page</a></p>
 </body>
 </html>

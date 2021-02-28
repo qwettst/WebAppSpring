@@ -7,7 +7,7 @@
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        <action name="login">
+        <action name="loginForm">
             <result>/login.jsp</result>
         </action>
     </package>
