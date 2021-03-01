@@ -26,7 +26,9 @@
         </action>
 
         <action name="delete" class="dev.qwett.webappspring.actions.StoreAction" method="delete">
-            <result name="success" type="redirect">/stores</result>
+            <result name="success" type="chain">
+                <param name="actionName">stores.action</param>
+            </result>
         </action>
 
         <action name="add" class="dev.qwett.webappspring.actions.StoreAction" method="add">
