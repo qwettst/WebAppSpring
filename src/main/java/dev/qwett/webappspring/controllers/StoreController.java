@@ -1,5 +1,6 @@
 package dev.qwett.webappspring.controllers;
 
+import dev.qwett.webappspring.dao.StoreDAO;
 import dev.qwett.webappspring.entities.Store;
 import dev.qwett.webappspring.service.StoreService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,15 +16,19 @@ import java.util.List;
 @RequestMapping("stores")
 public class StoreController {
 
+
+    private final StoreDAO storeDAO;
+
     private final StoreService storeService;
 
-    StoreController(StoreService storeService) {
+    StoreController(StoreService storeService, StoreDAO storeDAO) {
         this.storeService = storeService;
+        this.storeDAO = storeDAO;
     }
 
     @GetMapping
     public String getAll(Model model) {
-        List<Store> stores = storeService.findAll();
+        List<Store> stores = storeDAO.showAll();
         model.addAttribute("stores", stores);
         return "stores/store-list";
     }
@@ -78,6 +83,7 @@ public class StoreController {
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public String addStore(@ModelAttribute("store") Store store, RedirectAttributes redirAttrs) {
         if (store.getAddress() != null && !store.getAddress().trim().isEmpty()) {
+            storeDAO.addStore(store);
             return "redirect:/stores";
         }
         redirAttrs.addFlashAttribute("message", "Поле Адрес не должно быть пустым");
