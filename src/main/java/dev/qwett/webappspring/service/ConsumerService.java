@@ -5,7 +5,6 @@ import dev.qwett.webappspring.entities.Consumer;
 import java.util.List;
 
 public interface ConsumerService {
-
     List<Consumer> findAll();
 
     Consumer findById(int id);
@@ -17,4 +16,6 @@ public interface ConsumerService {
     void delete(int id);
 
     List<Consumer> findByName(String name);
+
+    List<Consumer> searchFilter(String name, String lastName, String phone);
 }

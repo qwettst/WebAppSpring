@@ -23,6 +23,7 @@ class StoreServiceImplTest {
         storeRepository = mock(StoreRepository.class);
         storeService = new StoreServiceImpl(storeRepository);
         store = new Store();
+        store.setAddress("dasda");
     }
 
     @Test
@@ -77,19 +78,18 @@ class StoreServiceImplTest {
 
     @Test
     void findByAddress() {
-        String str = any(String.class);
+        String str = "address";
         List<Store> storeList = new ArrayList<>();
         when(storeRepository.findByAddress(str)).thenReturn(storeList);
 
-        assertNotNull(storeService.findByAddress(any(String.class)));
+        assertNotNull(storeService.findByAddress(str));
 
         verify(storeRepository, times(1)).findByAddress(str);
     }
 
     @Test
     void delete() {
-        int id = any(Integer.class);
-        storeService.delete(id);
-        verify(storeRepository, times(1)).deleteById(id);
+        storeService.delete(0);
+        verify(storeRepository, times(1)).deleteById(anyInt());
     }
 }

@@ -4,6 +4,8 @@ import dev.qwett.webappspring.entities.Consumer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,13 +19,18 @@ class ConsumerServiceImplTest {
 
     private ConsumerServiceImpl consumerService;
     private ConsumerRepository consumerRepository;
+    private EntityManager entityManager;
+    private TypedQuery query;
     private Consumer consumer;
 
     @BeforeEach
     void init() {
         consumerRepository = mock(ConsumerRepository.class);
+        entityManager = mock(EntityManager.class);
+        query = mock(TypedQuery.class);
         consumerService = new ConsumerServiceImpl(consumerRepository);
         consumer = new Consumer();
+        consumerService.setEm(entityManager);
     }
 
 
@@ -47,13 +54,23 @@ class ConsumerServiceImplTest {
         verify(consumerRepository, times(1)).findById(id);
     }
 
+
+    //    @Test
+//    void addConsumer() {
+//        when(consumerRepository.save(consumer)).thenReturn(consumer);
+//
+//        assertNotNull(consumerService.addConsumer(consumer));
+//
+//        verify(consumerRepository, times(1)).save(consumer);
+//    }
     @Test
     void addConsumer() {
-        when(consumerRepository.save(consumer)).thenReturn(consumer);
+        when(entityManager.createQuery(anyString(), any())).thenReturn(query);
+        when(query.setParameter(eq("id"), anyInt())).thenReturn(query);
 
         assertNotNull(consumerService.addConsumer(consumer));
 
-        verify(consumerRepository, times(1)).save(consumer);
+        verify(entityManager, times(1)).persist(consumer);
     }
 
     @Test
@@ -79,10 +96,9 @@ class ConsumerServiceImplTest {
 
     @Test
     void delete() {
-        int id = any(Integer.class);
-        consumerService.delete(id);
+        consumerService.delete(anyInt());
 
-        verify(consumerRepository, times(1)).deleteById(id);
+        verify(consumerRepository, times(1)).deleteById(anyInt());
     }
 
     @Test
@@ -91,9 +107,8 @@ class ConsumerServiceImplTest {
         List<Consumer> consumerList = new ArrayList<>();
         when(consumerRepository.findByName(str)).thenReturn(consumerList);
 
-        assertNotNull(consumerService.findByName(any(String.class)));
+        assertNotNull(consumerService.findByName(str));
 
         verify(consumerRepository, times(1)).findByName(str);
-
     }
 }

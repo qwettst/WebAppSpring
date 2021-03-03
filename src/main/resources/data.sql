@@ -46,7 +46,12 @@ INSERT INTO Consumer
 VALUES
   ('Pokupatel_1', 'Petrov', 1324234),
   ('Pokupatel_2', 'Ivanov', 321411),
-  ('Pokupatel_3', 'Nikolaev', 2);
+  ('Pokupatel_3', 'Nikolaev', 213124),
+  ('Danil', 'Danilov', 3124123),
+  ('Danil', 'Petrov', 5436),
+  ('Pavel', 'Afanfnas', 6547),
+  ('Kostya', 'Tomsk', 546),
+  ('Denis', 'Ivanov', 234);
 
 -- ************************************** `Feedback`
 

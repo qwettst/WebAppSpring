@@ -53,8 +53,16 @@
 <div sec:authorize="hasRole('ADMIN')">
     <p>
     <form th:method="GET" th:action="@{/consumers/filtered}">
-        <label for="nameInput">Поиск по имени: </label>
+        <label for="nameInput">Имя: </label>
         <input type="text" name="name" id="nameInput"/>
+        <br/>
+        <br/>
+        <label for="lastNameInput">Фамилия: </label>
+        <input type="text" name="lastName" id="lastNameInput"/>
+        <br/>
+        <br/>
+        <label for="phoneInput">Телефон: </label>
+        <input type="text" name="phone" id="phoneInput"/>
         <br/>
         <input type="submit" value="Найти"/>
     </form>

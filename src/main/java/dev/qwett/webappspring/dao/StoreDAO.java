@@ -1,11 +1,14 @@
 package dev.qwett.webappspring.dao;
 
 import dev.qwett.webappspring.entities.Store;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,23 +16,22 @@ import java.util.List;
 @Component
 public class StoreDAO {
 
-    private static final String URL = "jdbc:h2:mem:testdb";
-    private static final String USERNAME = "qwe";
-    private static final String PASSWORD = "qwe";
-
-    private static Connection connection;
-
-    @PersistenceContext
+    private Connection connection;
     private EntityManager em;
 
-    static {
+    @PersistenceContext
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+    @Autowired
+    public void setConnection(DataSource dataSource) {
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            this.connection = dataSource.getConnection();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
     public List<Store> showAll() {
         List<Store> storeList = new ArrayList<>();
         String sql = "SELECT * FROM Store";
@@ -62,6 +64,7 @@ public class StoreDAO {
         return store;
     }
 
+    @Transactional
     public Store saveStore(Store store) {
         if (store.getAddress() != null && !store.getAddress().trim().isEmpty()) {
             if (findById(store.getIdStore()) == null) {

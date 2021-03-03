@@ -31,7 +31,7 @@ public class ConsumerController {
     @GetMapping({"/filtered"})
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public String getByName(HttpServletRequest request, Model model) {
-        List<Consumer> consumers = consumerService.findByName(request.getParameter("name"));
+        List<Consumer> consumers = consumerService.searchFilter(request.getParameter("name"), request.getParameter("lastName"), request.getParameter("phone"));
         model.addAttribute("consumers", consumers);
         return "consumers/consumer-list";
     }

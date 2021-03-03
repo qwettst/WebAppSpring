@@ -5,7 +5,6 @@ import dev.qwett.webappspring.entities.Store;
 import dev.qwett.webappspring.service.StoreService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -19,7 +18,6 @@ public class StoreController {
 
 
     private final StoreDAO storeDAO;
-
     private final StoreService storeService;
 
     StoreController(StoreService storeService, StoreDAO storeDAO) {
@@ -80,7 +78,6 @@ public class StoreController {
         return "redirect:/stores";
     }
 
-    @Transactional
     @PutMapping
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public String addStore(@ModelAttribute("store") Store store, RedirectAttributes redirAttrs) {
