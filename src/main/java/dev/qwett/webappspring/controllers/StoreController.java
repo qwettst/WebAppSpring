@@ -85,7 +85,6 @@ public class StoreController {
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public String addStore(@ModelAttribute("store") Store store, RedirectAttributes redirAttrs) {
         if (store.getAddress() != null && !store.getAddress().trim().isEmpty()) {
-            store.setIdStore(1);
             storeDAO.saveStore(store);
             return "redirect:/stores";
         }
