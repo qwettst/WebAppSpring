@@ -5,6 +5,7 @@ import dev.qwett.webappspring.entities.Store;
 import dev.qwett.webappspring.service.StoreService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -79,11 +80,13 @@ public class StoreController {
         return "redirect:/stores";
     }
 
+    @Transactional
     @PutMapping
     @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
     public String addStore(@ModelAttribute("store") Store store, RedirectAttributes redirAttrs) {
         if (store.getAddress() != null && !store.getAddress().trim().isEmpty()) {
-            storeDAO.addStore(store);
+            store.setIdStore(1);
+            storeDAO.saveStore(store);
             return "redirect:/stores";
         }
         redirAttrs.addFlashAttribute("message", "Поле Адрес не должно быть пустым");
