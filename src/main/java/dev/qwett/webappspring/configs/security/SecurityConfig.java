@@ -1,6 +1,6 @@
-package dev.qwett.webappspring.config;
+package dev.qwett.webappspring.configs.security;
 
-import dev.qwett.webappspring.entities.model.Role;
+import dev.qwett.webappspring.configs.security.model.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -53,5 +53,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12);
     }
-
 }

@@ -25,13 +25,13 @@ class ConsumerServiceImpl implements ConsumerService {
 
     private EntityManager em;
 
+    ConsumerServiceImpl(ConsumerRepository consumerRepository) {
+        this.consumerRepository = consumerRepository;
+    }
+
     @PersistenceContext
     public void setEm(EntityManager em) {
         this.em = em;
-    }
-
-    ConsumerServiceImpl(ConsumerRepository consumerRepository) {
-        this.consumerRepository = consumerRepository;
     }
 
     public List<Consumer> findAll() {
@@ -58,7 +58,7 @@ class ConsumerServiceImpl implements ConsumerService {
     public Consumer updateConsumer(int id, Consumer consumer) {
         consumer.setIdConsumer(id);
         logger.info("Updating Consumer with id = {}", id);
-        if (consumerRepository.findById(consumer.getIdConsumer()) != null) {
+        if (consumerRepository.findById(consumer.getIdConsumer()).isPresent()) {
             logger.info("Consumer id = {},  was updated", id);
             return consumerRepository.save(consumer);
         }

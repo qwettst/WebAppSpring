@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("consumers")
 public class ConsumerController {
@@ -29,7 +28,7 @@ public class ConsumerController {
     }
 
     @GetMapping({"/filtered"})
-    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
+    @PreAuthorize("hasRole(T(dev.qwett.webappspring.configs.security.model.Role).ADMIN.name())")
     public String getByName(HttpServletRequest request, Model model) {
         List<Consumer> consumers = consumerService.searchFilter(request.getParameter("name"), request.getParameter("lastName"), request.getParameter("phone"));
         model.addAttribute("consumers", consumers);
@@ -37,7 +36,7 @@ public class ConsumerController {
     }
 
     @GetMapping({"edit/{id}"})
-    @PreAuthorize("hasAnyRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name(), T(dev.qwett.webappspring.entities.model.Role).USER.name())")
+    @PreAuthorize("hasAnyRole(T(dev.qwett.webappspring.configs.security.model.Role).ADMIN.name(), T(dev.qwett.webappspring.configs.security.model.Role).USER.name())")
     public String editConsumer(@PathVariable int id, Model model) {
         Consumer consumer = consumerService.findById(id);
         model.addAttribute("consumer", consumer);
@@ -45,30 +44,29 @@ public class ConsumerController {
     }
 
     @GetMapping({"/add"})
-    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
+    @PreAuthorize("hasRole(T(dev.qwett.webappspring.configs.security.model.Role).ADMIN.name())")
     public String addConsumerForm(Consumer consumer) {
         return "consumers/consumer-add";
     }
 
     @PostMapping("{id}")
-    @PreAuthorize("hasAnyRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name(), T(dev.qwett.webappspring.entities.model.Role).USER.name())")
+    @PreAuthorize("hasAnyRole(T(dev.qwett.webappspring.configs.security.model.Role).ADMIN.name(), T(dev.qwett.webappspring.configs.security.model.Role).USER.name())")
     public String editConsumer(@PathVariable int id, @ModelAttribute("consumer") Consumer consumer) {
         consumerService.updateConsumer(id, consumer);
         return "redirect:/consumers";
     }
 
     @DeleteMapping("{id}")
-    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
+    @PreAuthorize("hasRole(T(dev.qwett.webappspring.configs.security.model.Role).ADMIN.name())")
     public String deleteConsumer(@PathVariable int id) {
         consumerService.delete(id);
         return "redirect:/consumers";
     }
 
     @PutMapping
-    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
+    @PreAuthorize("hasRole(T(dev.qwett.webappspring.configs.security.model.Role).ADMIN.name())")
     public String addConsumer(@ModelAttribute("consumer") Consumer consumer) {
         consumerService.addConsumer(consumer);
         return "redirect:/consumers";
     }
-
 }

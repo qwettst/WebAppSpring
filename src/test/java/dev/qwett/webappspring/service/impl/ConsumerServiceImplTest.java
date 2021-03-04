@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -30,6 +29,7 @@ class ConsumerServiceImplTest {
         query = mock(TypedQuery.class);
         consumerService = new ConsumerServiceImpl(consumerRepository);
         consumer = new Consumer();
+        consumer.setFirstName("Dsadasfas");
         consumerService.setEm(entityManager);
     }
 
@@ -47,9 +47,10 @@ class ConsumerServiceImplTest {
     @Test
     void findById() {
         int id = any(Integer.class);
-        when(consumerRepository.findById(id)).thenReturn(Optional.ofNullable(consumer));
+        when(consumerRepository.findById(consumer.getIdConsumer())).thenReturn(Optional.ofNullable(consumer));
+        when(entityManager.createQuery(anyString(), any())).thenReturn(query);
 
-        assertNotNull(consumerService.findById(id));
+        assertTrue((consumerRepository.findById(id)).isPresent());
 
         verify(consumerRepository, times(1)).findById(id);
     }
