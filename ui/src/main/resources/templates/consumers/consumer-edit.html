@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Изменить покупателя</title>
+    <meta content="application/json>" http-equiv="Content-Type">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div th:switch="${consumer}">
+    <h2 th:case="null">Покупатель не найден</h2>
+    <div th:case="*">
+        <form th:action="@{/consumers/{id}(id=${consumer.idConsumer})}" th:method="post" th:object="${consumer}">
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Phone</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="*{idConsumer}"></td>
+                    <td><input th:field="*{firstName}" type="text"></td>
+                    <td><input th:field="*{lastName}" type="text"></td>
+                    <td><input th:field="*{phone}" type="text"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p><input type="submit" value="Изменить"/></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

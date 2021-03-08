@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Изменить магазин</title>
+    <meta content="application/json>" http-equiv="Content-Type">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div th:switch="${store}">
+    <h2 th:case="null">Магазин не найден</h2>
+    <div th:case="*">
+        <form th:action="@{/stores/{id}(id=${store.idStore})}" th:method="post" th:object="${store}">
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="*{idStore}"></td>
+                    <td><input th:field="*{address}" type="text"></td>
+                </tr>
+                </tbody>
+            </table>
+            <p><input type="submit" value="Изменить"/></p>
+        </form>
+    </div>
+</div>
+<p th:text="${message}"></p>
+</body>
+</html>

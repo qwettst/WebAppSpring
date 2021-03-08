@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список магазинов</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()" th:switch="${stores}">
+    <h2 th:case="null">Магазинов нет</h2>
+    <div th:case="*">
+        <h2>Магазины</h2>
+        <p>
+        <div sec:authorize="hasRole('ADMIN')">
+            <form action="/stores/add">
+                <input type="submit" value="Добавить новый"/>
+            </form>
+        </div>
+        </p>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="store : ${stores}">
+                <td th:text="${store.idStore}"></td>
+                <td th:text="${store.address}"></td>
+                <td>
+                    <form th:action="@{/stores/edit/{id}(id=${store.idStore})}">
+                        <input type="submit" value="Изменить"/>
+                    </form>
+                </td>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <td>
+                        <form th:action="@{/stores/{id}(id=${store.idStore})}" th:method="delete">
+                            <input type="submit" value="Удалить"/>
+                        </form>
+                    </td>
+                </div>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div sec:authorize="hasRole('ADMIN')">
+    <p>
+    <form th:action="@{/stores/filtered}" th:method="GET">
+        <label for="nameInput">Поиск по имени: </label>
+        <input id="nameInput" name="address" type="text"/>
+        <br/>
+        <input type="submit" value="Найти"/>
+    </form>
+    </p>
+    <p th:text="${message}"></p>
+</div>
+</body>
+</html>

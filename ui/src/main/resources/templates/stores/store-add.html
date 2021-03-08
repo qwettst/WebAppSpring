@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление магазина</title>
+    <meta content="application/json>" http-equiv="Content-Type">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div>
+    <h2>Добавить магазин</h2>
+    <form th:action="@{/stores}" th:method="put" th:object="${store}">
+        <label for="address">Адрес</label>
+        <input id="address" placeholder="Адрес" th:field="*{address}" type="text">
+        <input type="submit" value="Добавить магазин">
+    </form>
+    <p th:text="${message}"></p>
+</div>
+</body>
+</html>
