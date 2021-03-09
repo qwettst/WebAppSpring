@@ -15,8 +15,6 @@ import java.util.List;
 @RequestMapping("stores")
 public class StoreController {
 
-
-    private final StoreDAO storeDAO;
     private final StoreService storeService;
 
     StoreController(StoreService storeService) {
@@ -52,7 +50,7 @@ public class StoreController {
     }
 
     @GetMapping({"/add"})
-    @PreAuthorize("hasRole(T(dev.qwett.webappspring.entities.model.Role).ADMIN.name())")
+    @PreAuthorize("hasRole(T(dev.qwett.security.model.Role).ADMIN.name())")
     public String addStoreForm(Store store) {
         return "stores/store-add";
     }
