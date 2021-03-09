@@ -56,6 +56,7 @@ class ConsumerServiceImplTest {
     @Test
     void saveConsumer() {
         when(consumerRepository.save(consumer)).thenReturn(consumer);
+        when(consumerRepository.findById(consumer.getIdConsumer())).thenReturn(Optional.empty());
 
         assertNotNull(consumerService.saveConsumer(consumer));
 
@@ -64,6 +65,7 @@ class ConsumerServiceImplTest {
 
     @Test
     void saveConsumerJPA() {
+        when(consumerRepository.findById(consumer.getIdConsumer())).thenReturn(Optional.empty());
         when(entityManager.createQuery(anyString(), any())).thenReturn(query);
         when(query.setParameter(eq("id"), anyInt())).thenReturn(query);
 
