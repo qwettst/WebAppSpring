@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 class ConsumerServiceImpl implements ConsumerService {
@@ -101,14 +102,19 @@ class ConsumerServiceImpl implements ConsumerService {
         CriteriaQuery<Consumer> cq = cb.createQuery(Consumer.class);
         Root<Consumer> root = cq.from(Consumer.class);
 
-        Predicate likeFirstName = cb.like(root.get("firstName"), "%" + name + "%");
-        Predicate likeLastName = cb.like(root.get("lastName"), "%" + lastName + "%");
+        Optional<String> optName, optLastName, optPhone;
+        optName = Optional.ofNullable(name);
+        optLastName = Optional.ofNullable(lastName);
+        optPhone = Optional.ofNullable(phone);
+
+        Predicate likeFirstName = cb.like(root.get("firstName"), "%" + optName.orElse("") + "%");
+        Predicate likeLastName = cb.like(root.get("lastName"), "%" + optLastName.orElse("") + "%");
         Predicate andFirstLastName = cb.and(likeFirstName, likeLastName);
 
-        Predicate likePhone = cb.like(root.get("phone"), "%" + phone + "%");
+        Predicate likePhone = cb.like(root.get("phone"), "%" + optPhone.orElse("") + "%");
         Predicate orPhoneNameAnd = cb.and(likePhone, andFirstLastName);
 
-        if (phone.trim().isEmpty()) {
+        if (!optPhone.isPresent()) {
             cq.select(root).
                     where(andFirstLastName);
         } else {

@@ -18,14 +18,12 @@ public class RestStoreController {
 
     @GetMapping
     public List<Store> getAll() {
-        List<Store> stores = storeService.findAllJDBC();
-        return stores;
+        return storeService.findAllJDBC();
     }
 
-    @GetMapping({"/filtered{address}"})
-    public List<Store> getByName(@PathVariable String address) {
-        List<Store> stores = storeService.findByAddress(address);
-        return stores;
+    @GetMapping({"/filtered"})
+    public List<Store> getByName(@RequestParam(value = "name") String address) {
+        return storeService.findByAddress(address);
     }
 
     @PostMapping("{id}")
