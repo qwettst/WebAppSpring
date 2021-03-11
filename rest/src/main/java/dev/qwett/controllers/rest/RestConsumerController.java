@@ -1,10 +1,14 @@
 package dev.qwett.controllers.rest;
 
 import dev.qwett.entities.Consumer;
+import dev.qwett.resources.ConsumerRepresentation;
+import dev.qwett.resources.assemblers.ConsumerModelAssembler;
 import dev.qwett.service.ConsumerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +19,11 @@ import java.util.List;
 public class RestConsumerController {
 
     private final ConsumerService consumerService;
+    private final ConsumerModelAssembler consumerModelAssembler;
 
-    RestConsumerController(ConsumerService consumerService) {
+    RestConsumerController(ConsumerService consumerService, ConsumerModelAssembler consumerModelAssembler) {
         this.consumerService = consumerService;
+        this.consumerModelAssembler = consumerModelAssembler;
     }
 
     @GetMapping
@@ -25,7 +31,7 @@ public class RestConsumerController {
             tags = {"Покупатели"},
             description = "Возвращает список покупателей",
             responses = @ApiResponse(responseCode = "200", description = "Список покупателей"))
-    public List<Consumer> getAll(
+    public CollectionModel<ConsumerRepresentation> getAll(
             @Parameter(description = "Имя покупателя для поиска", example = "Danil")
             @RequestParam(value = "name", required = false) String name,
 
@@ -34,10 +40,13 @@ public class RestConsumerController {
 
             @Parameter(description = "Номер телефона покупателя для поиска", example = "5436")
             @RequestParam(value = "phone", required = false) String phone) {
+        List<Consumer> consumers;
         if (name == null & lastName == null & phone == null)
-            return consumerService.findAll();
+            consumers = consumerService.findAll();
         else
-            return consumerService.searchFilter(name, lastName, phone);
+            consumers = consumerService.searchFilter(name, lastName, phone);
+        CollectionModel<ConsumerRepresentation> result = consumerModelAssembler.toCollectionModel(consumers);
+        return result;
     }
 
     @PostMapping("{id}")
@@ -51,8 +60,9 @@ public class RestConsumerController {
             tags = {"Покупатели"},
             description = "Удаляет запись о покупателе",
             responses = {@ApiResponse(responseCode = "200", description = "Покупатель удален"), @ApiResponse(responseCode = "403", description = "Доступ запрещен")})
-    public void deleteConsumer(@PathVariable int id) {
+    public ResponseEntity<Void> deleteConsumer(@PathVariable int id) {
         consumerService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping

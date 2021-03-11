@@ -18,3 +18,12 @@ allprojects {
     }
 
 }
+
+subprojects {
+
+    ext {
+        springBootJDBCVersion = '2.4.3'
+        springBootHateOASVersion = '2.4.3'
+        springBootSecurityVersion = '2.4.3'
+    }
+}
